@@ -75,9 +75,39 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
-  }
+  function Car(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  };
+
+  Car.prototype.fill = function(gallons){
+    this.tank = gallons + this.tank;
+  };
+
+  Car.prototype.drive = function(distance){
+    if(distance/this.milesPerGallon >= this.tank){
+      this.odometer = this.odometer + (this.tank * this.milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }else{
+    this.tank = this.tank - (distance/this.milesPerGallon);
+    this.odometer = this.odometer + distance;
+    };
+  };
+
+  let tesla = new Car(`model3`, 1000);
+
+  console.log(tesla);
+
+  tesla.fill(20);
+
+  console.log(tesla);
+
+  console.log(tesla.drive(54400));
+
+  console.log(tesla);
   
   
   /*
@@ -87,10 +117,9 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+  function Baby(babyName, babyAge, favoriteToy) {
+    Person.call(this, babyName, babyAge)
   }
- 
   
   /* 
     TASK 4
