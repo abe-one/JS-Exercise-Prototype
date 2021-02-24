@@ -97,17 +97,17 @@ function Airplane(name) {
     };
   };
 
-  let tesla = new Car(`model3`, 1000);
+  // let tesla = new Car(`model3`, 1000);
 
-  console.log(tesla);
+  // console.log(tesla);
 
-  tesla.fill(20);
+  // tesla.fill(20);
 
-  console.log(tesla);
+  // console.log(tesla);
 
-  console.log(tesla.drive(54400));
+  // console.log(tesla.drive(54400));
 
-  console.log(tesla);
+  // console.log(tesla);
   
   
   /*
@@ -118,8 +118,12 @@ function Airplane(name) {
           + Should return a string "Playing with x", x being the favorite toy.
   */
   function Baby(babyName, babyAge, favoriteToy) {
-    Person.call(this, babyName, babyAge)
+    Person.call(this, babyName, babyAge);
+    this.favoriteToy = favoriteToy;
   }
+
+  Baby.prototype = Object.create(Person.prototype);
+  Baby.prototype.play = function(){return `Playing with ${this.favoriteToy}`};
   
   /* 
     TASK 4
