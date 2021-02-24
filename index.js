@@ -128,10 +128,12 @@ function Airplane(name) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. If `new` is used when calling a function containing `this`, `this` will refer to the newly created object
+    2. If .call(), ..apply(), or .bind() are used on a function containing this, this will refer to whatever argument is given to those methods. THAT'S WHY Parent.call(this) works! Because the `this` used as an argument refers to the child's `this` which will be defined when the child function is invoked!!!!!!!!!
+    3. If a function containing `this` is called as a method, `this` will refer to the object that owns the method, the object to the left of the dot.
+    4. If a function is called out in the wild global scope, `this` will refer to the global object, the biggest container, where all the .js lives, in the browser that's the window. Bad practice.
+    5. Highest rule wins.
+    6. Arrow functions wreck all the above rules and set `this` to whatever was this at the point of arrow function creation.
   */
   
   
